@@ -1,0 +1,467 @@
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Cairo',sans-serif;
+}
+
+
+html {
+    width:100%;
+    overflow-x:hidden;
+}
+
+
+body {
+
+    width:100%;
+    min-height:100vh;
+
+    background:
+    linear-gradient(135deg,#001f3f,#0096c7);
+
+    color:white;
+
+    overflow-x:hidden;
+
+    animation:pageShow 1s ease;
+
+}
+
+
+
+@keyframes pageShow {
+
+    from {
+        opacity:0;
+    }
+
+    to {
+        opacity:1;
+    }
+
+}
+
+
+
+/* هدر */
+
+header {
+
+    text-align:center;
+
+    padding:60px 20px 40px;
+
+}
+
+
+header h1 {
+
+    font-family:'Playfair Display',serif;
+
+    font-size:60px;
+
+    color:white;
+
+    text-shadow:
+    0 0 15px #00b4d8,
+    0 5px 20px rgba(0,0,0,.5);
+
+}
+
+
+
+header p {
+
+    margin-top:15px;
+
+    font-size:20px;
+
+    color:#caf0f8;
+
+}
+
+
+
+/* منوی اصلی */
+
+.menu {
+
+    width:90%;
+
+    max-width:500px;
+
+    margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    padding:30px 0 60px;
+
+}
+
+
+
+/* زیر منوها */
+
+.products {
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+    padding:30px 0 60px;
+
+}
+
+
+
+/* کارت ها */
+
+.card,
+.product {
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.08)
+    );
+
+
+    backdrop-filter:blur(18px);
+
+
+    border:1px solid rgba(255,255,255,.3);
+
+
+    border-radius:30px;
+
+
+    padding:25px 15px;
+
+
+    min-height:220px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    color:white;
+
+
+    text-decoration:none;
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+
+    transition:.4s;
+
+}
+
+
+
+.card:hover,
+.product:hover {
+
+    transform:
+    translateY(-10px)
+    scale(1.04);
+
+
+    background:
+    rgba(255,255,255,.28);
+
+}
+
+
+
+/* منوی اصلی */
+
+.card {
+
+    min-height:100px;
+
+}
+
+
+.card h2 {
+
+    color:#caf0f8;
+
+    font-size:26px;
+
+}
+
+
+
+/* استیکر وسط */
+
+.sticker {
+
+    width:85px;
+
+    height:85px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #00b4d8,
+    #023e8a
+    );
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    font-size:38px;
+
+
+    margin-bottom:15px;
+
+
+    border:4px solid #caf0f8;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.4);
+
+}
+
+
+
+/* اسم محصول */
+
+.product h3 {
+
+    color:#e0fbfc;
+
+    font-size:23px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+/* قیمت */
+
+.product span {
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #00b4d8,
+    #023e8a
+    );
+
+
+    padding:10px 25px;
+
+
+    border-radius:50px;
+
+
+    font-weight:bold;
+
+
+    color:white;
+
+}
+
+
+
+/* دکمه برگشت */
+
+.back {
+
+    display:block;
+
+    width:160px;
+
+
+    margin:20px auto 50px;
+
+
+    padding:14px;
+
+
+    text-align:center;
+
+
+    border-radius:40px;
+
+
+    background:#023e8a;
+
+
+    color:white;
+
+
+    text-decoration:none;
+
+}
+
+
+
+/* موبایل */
+
+@media(max-width:768px){
+
+
+    header {
+
+        padding:40px 15px 25px;
+
+    }
+
+
+    header h1 {
+
+        font-size:38px;
+
+    }
+
+
+    header p {
+
+        font-size:16px;
+
+    }
+
+
+
+    .menu {
+
+        width:90%;
+
+        gap:18px;
+
+    }
+
+
+
+    .products {
+
+        width:92%;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:15px;
+
+    }
+
+
+
+    .product {
+
+        min-height:190px;
+
+        padding:20px 10px;
+
+    }
+
+
+
+    .sticker {
+
+        width:70px;
+
+        height:70px;
+
+        font-size:30px;
+
+    }
+
+
+
+    .product h3 {
+
+        font-size:17px;
+
+    }
+
+
+
+    .product span {
+
+        font-size:14px;
+
+        padding:8px 18px;
+
+    }
+
+
+}
+
+
+
+/* گوشی کوچک */
+
+@media(max-width:380px){
+
+
+    header h1 {
+
+        font-size:32px;
+
+    }
+
+
+    .products {
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .card h2 {
+
+        font-size:18px;
+
+    }
+
+
+}
+
+
