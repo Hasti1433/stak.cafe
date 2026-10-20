@@ -1,467 +1,921 @@
-* {
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:'Cairo',sans-serif;
+
+/* =========================================
+   HOT DRINKS - PREMIUM CAFE DESIGN
+   مخصوص hot-drinks.html
+========================================= */
+
+/* فونت فارسی */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+.hd-page,
+.hd-page *,
+.hd-page *::before,
+.hd-page *::after {
+    box-sizing: border-box;
 }
 
+.hd-page {
+    --hd-dark: #071a33;
+    --hd-blue: #075985;
+    --hd-cyan: #38bdf8;
+    --hd-light: #bae6fd;
+    --hd-bg: #edf6ff;
+    --hd-muted: #657b95;
 
-html {
-    width:100%;
-    overflow-x:hidden;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--hd-bg);
+    color: var(--hd-dark);
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    line-height: 1.9;
+    animation: hd-page-show .8s ease both;
 }
 
+.hd-page img {
+    display: block;
+    max-width: 100%;
+}
 
-body {
+.hd-page a {
+    -webkit-tap-highlight-color: transparent;
+}
 
-    width:100%;
-    min-height:100vh;
+.hd-page h1,
+.hd-page h2,
+.hd-page h3,
+.hd-page p,
+.hd-page a,
+.hd-page span {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+}
+
+@keyframes hd-page-show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================================
+   هدر اصلی
+========================================= */
+
+.hd-page .hd-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 460px;
+    overflow: hidden;
+    color: #fff;
 
     background:
-    linear-gradient(135deg,#001f3f,#0096c7);
+        linear-gradient(
+            115deg,
+            rgba(3, 17, 42, .93),
+            rgba(3, 73, 125, .73)
+        ),
+        url("images/coffee-banner.jpg") center / cover no-repeat;
 
-    color:white;
-
-    overflow-x:hidden;
-
-    animation:pageShow 1s ease;
-
+    border-bottom: 4px solid var(--hd-cyan);
 }
 
+/* نورهای متحرک پس‌زمینه */
+.hd-page .hd-hero::before,
+.hd-page .hd-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(65px);
+}
 
+.hd-page .hd-hero::before {
+    width: 300px;
+    height: 300px;
+    top: 70px;
+    right: -100px;
+    background: rgba(56, 189, 248, .22);
+    animation: hd-orb-float 7s ease-in-out infinite alternate;
+}
 
-@keyframes pageShow {
+.hd-page .hd-hero::after {
+    width: 260px;
+    height: 260px;
+    left: -90px;
+    bottom: -100px;
+    background: rgba(14, 165, 233, .2);
+    animation: hd-orb-float 9s ease-in-out infinite alternate-reverse;
+}
 
+@keyframes hd-orb-float {
+    from { transform: translate(0, 0) scale(.9); }
+    to { transform: translate(25px, -20px) scale(1.15); }
+}
+
+/* =========================================
+   نوار بالا و لوگو
+========================================= */
+
+.hd-page .hd-navbar {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.hd-page .hd-logo {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    background: linear-gradient(
+        110deg,
+        #fff 0%,
+        #9beaff 20%,
+        #fff 38%,
+        #38bdf8 52%,
+        #fff 68%,
+        #bceeff 82%,
+        #fff 100%
+    );
+
+    background-size: 250% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(73, 216, 255, .4));
+    animation: hd-logo-shine 4s linear infinite;
+}
+
+.hd-page .hd-logo span {
+    -webkit-text-fill-color: #49d8ff;
+    color: #49d8ff;
+}
+
+.hd-page .hd-home-link {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid rgba(125, 211, 252, .7);
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s ease;
+}
+
+.hd-page .hd-home-link:hover {
+    background: var(--hd-cyan);
+    color: var(--hd-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(56, 189, 248, .3);
+}
+
+/* =========================================
+   عنوان اصلی؛ بزرگ، براق و وسط‌چین
+========================================= */
+
+.hd-page .hd-hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 25px 65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hd-page .hd-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #7dd3fc;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    direction: ltr;
+    text-shadow: 0 0 15px rgba(56, 189, 248, .6);
+}
+
+/* عنوان قهوه‌های گرم */
+.hd-page .hd-hero-content h1 {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 8px 0 20px;
+    padding: 8px 15px;
+
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    font-size: clamp(46px, 7vw, 78px);
+    font-weight: 900;
+    line-height: 1.65;
+    text-align: center;
+
+    background: linear-gradient(
+        110deg,
+        #fff 0%,
+        #bceeff 16%,
+        #fff 30%,
+        #49d8ff 45%,
+        #fff 58%,
+        #a5e9ff 75%,
+        #fff 88%,
+        #38bdf8 100%
+    );
+
+    background-size: 300% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 0 13px rgba(73, 216, 255, .45));
+
+    animation:
+        hd-logo-shine 4s linear infinite,
+        hd-title-enter .9s ease both;
+}
+
+/* هاله نور پشت عنوان */
+.hd-page .hd-hero-content h1::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 10px -25px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, .25);
+    filter: blur(30px);
+    pointer-events: none;
+    animation: hd-halo-pulse 3s ease-in-out infinite alternate;
+}
+
+/* خط نورانی زیر عنوان */
+.hd-page .hd-hero-content h1::after {
+    content: "";
+    display: block;
+    width: 72%;
+    height: 3px;
+    margin: 4px auto 0;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #38bdf8,
+        #fff,
+        #38bdf8,
+        transparent
+    );
+
+    box-shadow: 0 0 15px #38bdf8;
+    animation: hd-line-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes hd-logo-shine {
+    from { background-position: 200% center; }
+    to { background-position: -50% center; }
+}
+
+@keyframes hd-title-enter {
     from {
-        opacity:0;
+        opacity: 0;
+        transform: translateY(18px) scale(.96);
     }
-
     to {
-        opacity:1;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes hd-halo-pulse {
+    from { opacity: .4; transform: scale(.94); }
+    to { opacity: .9; transform: scale(1.05); }
+}
+
+@keyframes hd-line-pulse {
+    from { opacity: .5; transform: scaleX(.75); }
+    to { opacity: 1; transform: scaleX(1); }
+}
+
+/* متن زیر عنوان */
+.hd-page .hd-hero-content p {
+    max-width: 650px;
+    margin: 8px auto;
+    color: #e0f5ff;
+    font-size: clamp(15px, 2vw, 19px);
+    font-weight: 400;
+    text-align: center;
+}
+
+/* دکمه مشاهده منو */
+.hd-page .hd-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 12px 32px;
+
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 35px;
+    background: linear-gradient(135deg, #38bdf8, #60a5fa);
+    color: #071a33;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+
+    box-shadow: 0 7px 25px rgba(56, 189, 248, .28);
+    transition: .3s ease;
+}
+
+.hd-page .hd-hero-btn:hover {
+    background: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(56, 189, 248, .5);
+}
+
+/* =========================================
+   بخش منو
+========================================= */
+
+.hd-page .hd-main {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px 25px 35px;
+}
+
+.hd-page .hd-heading {
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+.hd-page .hd-heading > span {
+    display: inline-block;
+    padding: 5px 17px;
+    border-radius: 30px;
+    background: #d7f1ff;
+    color: #0369a1;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.hd-page .hd-heading h2 {
+    margin: 12px 0 6px;
+    color: #0b2545;
+    font-size: clamp(23px, 3.5vw, 35px);
+    font-weight: 800;
+    line-height: 1.8;
+}
+
+.hd-page .hd-heading p {
+    margin: 0;
+    color: var(--hd-muted);
+    font-size: 14px;
+}
+
+/* =========================================
+   کارت محصولات
+========================================= */
+
+.hd-page .hd-products {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    padding: 10px 0 35px;
+}
+
+.hd-page .hd-product {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 0;
+    text-align: right;
+    background: #fff;
+    color: #0b2545;
+
+    border: 1px solid #d9eafb;
+    border-radius: 20px;
+
+    box-shadow: 0 7px 25px rgba(16, 64, 110, .08);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.hd-page .hd-product:hover {
+    transform: translateY(-8px);
+    border-color: #7dd3fc;
+    box-shadow: 0 18px 38px rgba(14, 116, 184, .18);
+}
+
+/* عکس محصولات */
+.hd-page .hd-product-image {
+    position: relative;
+    width: 100%;
+    height: 245px;
+    overflow: hidden;
+    background: #dbeafe;
+}
+
+.hd-page .hd-product-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease, filter .4s ease;
+}
+
+.hd-page .hd-product:hover .hd-product-image img {
+    transform: scale(1.08);
+    filter: saturate(1.08);
+}
+
+/* شماره محصولات */
+.hd-page .hd-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border: 1px solid rgba(125, 211, 252, .5);
+    border-radius: 25px;
+    background: rgba(7, 26, 51, .88);
+    color: #7dd3fc;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    direction: ltr;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+/* اطلاعات محصول */
+.hd-page .hd-product-info {
+    flex: 1;
+    padding: 17px 18px 20px;
+}
+
+.hd-page .hd-product-info h3 {
+    margin: 0;
+    color: #123b68;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.9;
+}
+
+.hd-page .hd-product-info p {
+    margin: 5px 0 0;
+    color: #657b95;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.hd-page .hd-product-footer {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid #e1edf9;
+}
+
+.hd-page .hd-price {
+    display: inline-block;
+    color: #0284c7;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.hd-page .hd-price small {
+    color: #647d99;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* =========================================
+   دکمه بازگشت
+========================================= */
+
+.hd-page .hd-back-wrapper {
+    padding: 35px 0 30px;
+    text-align: center;
+}
+
+.hd-page .hd-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
+    border-radius: 35px;
+    background: linear-gradient(135deg, #075985, #0284c7);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 7px 20px rgba(2, 132, 199, .2);
+    transition: .3s ease;
+}
+
+.hd-page .hd-back-btn:hover {
+    background: #38bdf8;
+    color: #071a33;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   فوتر
+========================================= */
+
+.hd-page .hd-footer {
+    padding: 22px 15px;
+    background: #071a33;
+    color: #bae6fd;
+    text-align: center;
+    font-size: 13px;
+    border-top: 3px solid #0284c7;
+}
+
+.hd-page .hd-footer p {
+    margin: 0;
+}
+
+/* =========================================
+   تبلت
+========================================= */
+
+@media (max-width: 900px) {
+    .hd-page .hd-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
     }
 
+    .hd-page .hd-product-image {
+        height: 220px;
+    }
 }
 
-
-
-/* هدر */
-
-header {
-
-    text-align:center;
-
-    padding:60px 20px 40px;
-
-}
-
-
-header h1 {
-
-    font-family:'Playfair Display',serif;
-
-    font-size:60px;
-
-    color:white;
-
-    text-shadow:
-    0 0 15px #00b4d8,
-    0 5px 20px rgba(0,0,0,.5);
-
-}
-
-
-
-header p {
-
-    margin-top:15px;
-
-    font-size:20px;
-
-    color:#caf0f8;
-
-}
-
-
-
-/* منوی اصلی */
-
-.menu {
-
-    width:90%;
-
-    max-width:500px;
-
-    margin:auto;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:25px;
-
-    padding:30px 0 60px;
-
-}
-
-
-
-/* زیر منوها */
-
-.products {
-
-    width:90%;
-
-    max-width:1200px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
-
-    padding:30px 0 60px;
-
-}
-
-
-
-/* کارت ها */
-
-.card,
-.product {
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-    145deg,
-    rgba(255,255,255,.22),
-    rgba(255,255,255,.08)
-    );
-
-
-    backdrop-filter:blur(18px);
-
-
-    border:1px solid rgba(255,255,255,.3);
-
-
-    border-radius:30px;
-
-
-    padding:25px 15px;
-
-
-    min-height:220px;
-
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    text-align:center;
-
-
-    color:white;
-
-
-    text-decoration:none;
-
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.35);
-
-
-    transition:.4s;
-
-}
-
-
-
-.card:hover,
-.product:hover {
-
-    transform:
-    translateY(-10px)
-    scale(1.04);
-
-
-    background:
-    rgba(255,255,255,.28);
-
-}
-
-
-
-/* منوی اصلی */
-
-.card {
-
-    min-height:100px;
-
-}
-
-
-.card h2 {
-
-    color:#caf0f8;
-
-    font-size:26px;
-
-}
-
-
-
-/* استیکر وسط */
-
-.sticker {
-
-    width:85px;
-
-    height:85px;
-
-
-    border-radius:50%;
-
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #00b4d8,
-    #023e8a
-    );
-
-
-    display:flex;
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-
-    font-size:38px;
-
-
-    margin-bottom:15px;
-
-
-    border:4px solid #caf0f8;
-
-
-    box-shadow:
-
-    0 10px 25px rgba(0,0,0,.4);
-
-}
-
-
-
-/* اسم محصول */
-
-.product h3 {
-
-    color:#e0fbfc;
-
-    font-size:23px;
-
-    margin-bottom:15px;
-
-}
-
-
-
-/* قیمت */
-
-.product span {
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #00b4d8,
-    #023e8a
-    );
-
-
-    padding:10px 25px;
-
-
-    border-radius:50px;
-
-
-    font-weight:bold;
-
-
-    color:white;
-
-}
-
-
-
-/* دکمه برگشت */
-
-.back {
-
-    display:block;
-
-    width:160px;
-
-
-    margin:20px auto 50px;
-
-
-    padding:14px;
-
-
-    text-align:center;
-
-
-    border-radius:40px;
-
-
-    background:#023e8a;
-
-
-    color:white;
-
-
-    text-decoration:none;
-
-}
-
-
-
-/* موبایل */
-
-@media(max-width:768px){
-
-
-    header {
-
-        padding:40px 15px 25px;
-
+/* =========================================
+   موبایل
+========================================= */
+
+@media (max-width: 520px) {
+    .hd-page .hd-hero {
+        min-height: 370px;
     }
 
-
-    header h1 {
-
-        font-size:38px;
-
+    .hd-page .hd-navbar {
+        padding: 15px;
     }
 
-
-    header p {
-
-        font-size:16px;
-
+    .hd-page .hd-logo {
+        font-size: 27px;
     }
 
-
-
-    .menu {
-
-        width:90%;
-
-        gap:18px;
-
+    .hd-page .hd-home-link {
+        padding: 7px 13px;
+        font-size: 12px;
     }
 
-
-
-    .products {
-
-        width:92%;
-
-        grid-template-columns:repeat(2,1fr);
-
-        gap:15px;
-
+    .hd-page .hd-hero-content {
+        padding: 38px 14px 48px;
     }
 
-
-
-    .product {
-
-        min-height:190px;
-
-        padding:20px 10px;
-
+    .hd-page .hd-eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
     }
 
-
-
-    .sticker {
-
-        width:70px;
-
-        height:70px;
-
-        font-size:30px;
-
+    .hd-page .hd-hero-content h1 {
+        font-size: clamp(35px, 9vw, 48px);
+        margin: 10px 0 17px;
+        padding: 6px 3px;
     }
 
-
-
-    .product h3 {
-
-        font-size:17px;
-
+    .hd-page .hd-hero-content p {
+        font-size: 14px;
     }
 
-
-
-    .product span {
-
-        font-size:14px;
-
-        padding:8px 18px;
-
+    .hd-page .hd-hero-btn {
+        padding: 10px 25px;
+        font-size: 13px;
     }
 
+    .hd-page .hd-main {
+        padding: 40px 12px 22px;
+    }
 
+    .hd-page .hd-heading {
+        margin-bottom: 25px;
+    }
+
+    .hd-page .hd-heading h2 {
+        font-size: 22px;
+    }
+
+    .hd-page .hd-heading p {
+        font-size: 12px;
+    }
+
+    .hd-page .hd-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .hd-page .hd-product {
+        border-radius: 14px;
+    }
+
+    .hd-page .hd-product-image {
+        height: 150px;
+    }
+
+    .hd-page .hd-product-info {
+        padding: 11px 10px 13px;
+    }
+
+    .hd-page .hd-product-info h3 {
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .hd-page .hd-product-info p {
+        font-size: 11px;
+        line-height: 1.9;
+    }
+
+    .hd-page .hd-product-footer {
+        margin-top: 9px;
+        padding-top: 8px;
+    }
+
+    .hd-page .hd-price {
+        font-size: 12px;
+    }
+
+    .hd-page .hd-price small {
+        font-size: 10px;
+    }
+
+    .hd-page .hd-tag {
+        top: 7px;
+        right: 7px;
+        padding: 2px 8px;
+        font-size: 10px;
+    }
 }
-
-
 
 /* گوشی کوچک */
-
-@media(max-width:380px){
-
-
-    header h1 {
-
-        font-size:32px;
-
+@media (max-width: 380px) {
+    .hd-page .hd-hero-content h1 {
+        font-size: 33px;
     }
 
-
-    .products {
-
-        grid-template-columns:repeat(2,1fr);
-
+    .hd-page .hd-product-image {
+        height: 125px;
     }
 
-
-    .card h2 {
-
-        font-size:18px;
-
+    .hd-page .hd-product-info {
+        padding: 9px 8px 11px;
     }
 
+    .hd-page .hd-product-info h3 {
+        font-size: 13px;
+    }
 
+    .hd-page .hd-price {
+        font-size: 11px;
+    }
+}
+
+/* کاهش انیمیشن برای دسترس‌پذیری */
+@media (prefers-reduced-motion: reduce) {
+    .hd-page,
+    .hd-page *,
+    .hd-page *::before,
+    .hd-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* =========================================
+   STAK CAFE - HOME PAGE
+   طراحی صفحه اصلی هماهنگ با منوها
+========================================= */
+
+body:not(.hd-page) {
+    --home-dark: #071a33;
+    --home-blue: #075985;
+    --home-cyan: #38bdf8;
+    --home-light: #edf6ff;
+
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--home-light);
+    color: var(--home-dark);
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+}
+
+body:not(.hd-page) * {
+    box-sizing: border-box;
+}
+
+body:not(.hd-page) header {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 360px;
+    padding: 75px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background:
+        radial-gradient(circle at 15% 20%,
+            rgba(56,189,248,.25), transparent 35%),
+        radial-gradient(circle at 85% 80%,
+            rgba(14,165,233,.2), transparent 30%),
+        linear-gradient(135deg, #031126, #075985, #071a33);
+    border-bottom: 4px solid var(--home-cyan);
+}
+
+body:not(.hd-page) header::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 260px;
+    height: 260px;
+    top: -140px;
+    right: -70px;
+    border: 1px solid rgba(125,211,252,.3);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 30px rgba(125,211,252,.04),
+        0 0 0 60px rgba(125,211,252,.03);
+}
+
+body:not(.hd-page) header h1 {
+    margin: 0;
+    direction: ltr;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 82px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(56,189,248,.4);
+}
+
+body:not(.hd-page) header p {
+    margin: 15px 0 0;
+    color: #d6efff;
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 2;
+}
+
+body:not(.hd-page) .menu {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 65px 0 80px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+body:not(.hd-page) .card {
+    position: relative;
+    isolation: isolate;
+    min-height: 175px;
+    padding: 25px 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border: 1px solid #c9e8fb;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #fff, #dcefff);
+    color: var(--home-dark);
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(7,26,51,.07);
+    transition: transform .3s ease, box-shadow .3s ease,
+                border-color .3s ease;
+}
+
+body:not(.hd-page) .card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 130px;
+    height: 130px;
+    top: -65px;
+    left: -35px;
+    border-radius: 50%;
+    background: rgba(56,189,248,.14);
+    transition: transform .4s ease;
+}
+
+body:not(.hd-page) .card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #38bdf8, #075985);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .3s ease;
+}
+
+body:not(.hd-page) .card:hover {
+    transform: translateY(-7px);
+    border-color: #38bdf8;
+    box-shadow: 0 18px 38px rgba(7,89,133,.15);
+}
+
+body:not(.hd-page) .card:hover::before {
+    transform: scale(1.5);
+}
+
+body:not(.hd-page) .card:hover::after {
+    transform: scaleX(1);
+}
+
+body:not(.hd-page) .card h2 {
+    margin: 0;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 800;
+    line-height: 2;
+}
+
+/* واکنش‌گرا برای تبلت */
+@media (max-width: 800px) {
+    body:not(.hd-page) .menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    body:not(.hd-page) header {
+        min-height: 320px;
+    }
+
+    body:not(.hd-page) .card {
+        min-height: 155px;
+    }
+}
+
+/* واکنش‌گرا برای موبایل */
+@media (max-width: 480px) {
+    body:not(.hd-page) header {
+        min-height: 290px;
+        padding: 55px 15px;
+    }
+
+    body:not(.hd-page) .menu {
+        width: 92%;
+        padding: 35px 0 50px;
+        gap: 12px;
+    }
+
+    body:not(.hd-page) .card {
+        min-height: 130px;
+        padding: 16px 12px;
+        border-radius: 13px;
+    }
+
+    body:not(.hd-page) .card h2 {
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body:not(.hd-page) *,
+    body:not(.hd-page) *::before,
+    body:not(.hd-page) *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 
